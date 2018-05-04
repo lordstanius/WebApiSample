@@ -1,0 +1,10 @@
+.header {
+  background-color: gainsboro;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
