@@ -23,23 +23,23 @@ namespace Server.Core.Models
 
                 entity.Property(e => e.EmpCode)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(true);
 
                 entity.Property(e => e.FirstName)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(true);
 
                 entity.Property(e => e.LastName)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(true);
 
                 entity.Property(e => e.Office)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(true);
 
                 entity.Property(e => e.Position)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(true);
             });
         }
     }

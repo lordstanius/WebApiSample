@@ -1,5 +1,20 @@
 .example-form {
     display: flex;
     flex-direction: column;
-    max-width: 300px;
+}
+
+.row {
+  display: flex;
+}
+
+.reduced {
+  width: 30%;
+}
+
+.auto-fit {
+  flex: auto;
+}
+
+.row :last-child {
+  margin-left: 10px;
 }

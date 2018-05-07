@@ -21,8 +21,7 @@ import {
   MatFormField,
   MatFormFieldModule,
   MatDatepickerModule,
-  MatNativeDateModule,
-
+  MatNativeDateModule
 } from '@angular/material';
 
 @NgModule({
@@ -47,8 +46,7 @@ import {
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    CdkTableModule,
-
+    CdkTableModule
   ],
   exports: [
     MatButtonModule,
@@ -71,8 +69,7 @@ import {
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    CdkTableModule,
-
+    CdkTableModule
   ],
 })
 export class AngularMaterialModule {

@@ -1,10 +1,19 @@
 .header {
-  background-color: gainsboro;
-  border-radius: 5px;
+  display: flex;
+  margin-bottom: 20px;
   justify-content: center;
 }
 
 .content {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.content :first-child {
+  margin-right: 30px;
+}
+
+.content :last-child {
+  flex: auto;
 }

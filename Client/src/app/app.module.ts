@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './employees/employees.component';
@@ -11,6 +12,12 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 import { ToastrModule } from 'ngx-toastr';
 
 import { AngularMaterialModule } from './angular-material.module';
+
+const routes: Routes = [
+  { path: 'home', component: EmployeesComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', component: EmployeesComponent }
+];
 
 @NgModule({
   declarations: [
@@ -25,7 +32,8 @@ import { AngularMaterialModule } from './angular-material.module';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

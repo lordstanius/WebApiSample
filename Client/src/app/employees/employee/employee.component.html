@@ -1,44 +1,41 @@
-<form class="example-form" #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
-  <input type="hidden" name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="employeeService.selectedEmployee.EmployeeID">
-  <mat-form-field>
-    <input matInput name="FirstName" #FirstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.FirstName" placeholder="First Name"
-      required>
-    <mat-error *ngIf="FirstName.invalid && FirstName.touched">
-      First name is
-      <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
+<mat-card>
+  <form class="example-form" #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+    <div class="row">
+      <input type="hidden" name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="employeeService.selectedEmployee.EmployeeID">
+      <mat-form-field class="auto-fit">
+        <input matInput name="FirstName" #FirstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.FirstName" placeholder="First Name"
+          required>
+        <mat-error *ngIf="FirstName.invalid && FirstName.touched">
+          First name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="auto-fit">
+        <input matInput name="LastName" #LastName="ngModel" [(ngModel)]="employeeService.selectedEmployee.LastName" placeholder="Last Name"
+          required>
+        <mat-error *ngIf="LastName.invalid && LastName.touched">
+          Last name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="auto-fit">
+        <input matInput name="Position" #Position="ngModel" [(ngModel)]="employeeService.selectedEmployee.Position" placeholder="Position">
+      </mat-form-field>
+      <mat-form-field class="reduced">
+        <input matInput name="EmpCode" #EmpCode="ngModel" [(ngModel)]="employeeService.selectedEmployee.EmpCode" placeholder="Empl. code">
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <input matInput name="Office" #Office="ngModel" [(ngModel)]="employeeService.selectedEmployee.Office" placeholder="Office">
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" [disabled]="!employeeForm.valid" type="submit">
+        <i class="material-icons">save</i> Submit
+      </button>
 
-  <mat-form-field>
-    <input matInput name="LastName" #LastName="ngModel" [(ngModel)]="employeeService.selectedEmployee.LastName" placeholder="Last Name"
-      required>
-    <mat-error *ngIf="LastName.invalid && LastName.touched">
-      Last name is
-      <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <!-- <input matInput placeholder="Favorite food" value="Sushi"> -->
-    <input matInput name="Position" #Position="ngModel" [(ngModel)]="employeeService.selectedEmployee.Position" placeholder="Position">
-  </mat-form-field>
-
-  <mat-form-field>
-    <!-- <input matInput placeholder="Favorite food" value="Sushi"> -->
-    <input matInput name="EmpCode" #EmpCode="ngModel" [(ngModel)]="employeeService.selectedEmployee.EmpCode" placeholder="Employee code">
-  </mat-form-field>
-
-  <mat-form-field>
-    <!-- <input matInput placeholder="Favorite food" value="Sushi"> -->
-    <input matInput name="Office" #Office="ngModel" [(ngModel)]="employeeService.selectedEmployee.Office" placeholder="Office">
-  </mat-form-field>
-  <div>
-    <button mat-raised-button color="primary" [disabled]="!employeeForm.valid" type="submit">
-      <i class="fa fa-floppy-o"></i> Submit
-    </button>
-
-    <button mat-raised-button type="button" class="btn btn-lg btn-block btn-secondary" (click)="resetForm(employeeForm)">
-      <i class="fa fa-repeat"></i> Reset
-    </button>
-  </div>
-</form>
+      <button mat-raised-button type="button" class="btn btn-lg btn-block btn-secondary" (click)="resetForm(employeeForm)">
+        <i class="material-icons">refresh</i> Reset
+      </button>
+    </div>
+  </form>
+</mat-card>
