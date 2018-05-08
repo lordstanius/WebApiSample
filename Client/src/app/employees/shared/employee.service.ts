@@ -5,22 +5,18 @@ import { Employee } from './employee.model';
 import { environment } from '../../../environments/environment';
 import { Helper } from './helper';
 import { MatTableDataSource } from '@angular/material';
+import { forEach } from '@angular/router/src/utils/collection';
+import { List } from './list';
 
 @Injectable()
 export class EmployeeService {
 
   selectedEmployee: Employee;
-  employeeList: Employee[];
   url: string;
-
-  private _dataSource: MatTableDataSource<Employee>;
+  employeeList: List<Employee>;
 
   constructor(private http: HttpClient) {
     this.url = Helper.getApiUrlForService(this);
-  }
-
-  set dataSource(dataSource: MatTableDataSource<Employee>) {
-    this._dataSource = dataSource;
   }
 
   postEmployee(employee: Employee): Observable<Employee> {
@@ -31,7 +27,7 @@ export class EmployeeService {
     return this.http.put(this.url + employee.EmployeeID, employee);
   }
 
-  getEmployeeList(): Observable<Employee[]> {
+  getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.url);
   }
 
@@ -43,11 +39,7 @@ export class EmployeeService {
     return this.http.delete(this.url + id);
   }
 
-  refreshList(): void {
-    this.getEmployeeList().subscribe(data => {
-      if (this._dataSource) {
-        this._dataSource.data = data;
-      }
-    });
+  loadList(): void {
+    this.getEmployees().subscribe(data => this.employeeList = new List<Employee>(data));
   }
 }

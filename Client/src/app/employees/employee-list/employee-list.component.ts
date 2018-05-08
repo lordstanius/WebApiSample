@@ -10,7 +10,6 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
-  dataSource = new MatTableDataSource<Employee>();
   displayedColumns = ['EmployeeID', 'FirstName', 'LastName', 'Position', 'Office', 'Actions'];
 
   constructor(
@@ -21,8 +20,8 @@ export class EmployeeListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.employeeService.dataSource = this.dataSource;
-    this.employeeService.refreshList();
+    this.employeeService.loadList();
+
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.employeeService.getEmployee(params['id']).subscribe(employee =>
@@ -41,8 +40,8 @@ export class EmployeeListComponent implements OnInit {
     if (confirm('Are you sure you want to delete this record ?')) {
       this.employeeService.deleteEmployee(id)
         .subscribe(x => {
+          this.employeeService.employeeList.remove(empl => empl.EmployeeID === id);
           this.router.navigate(['home']);
-          this.employeeService.refreshList();
           this.toastr.warning('Deleted Successfully', 'Employee Register');
         });
     }

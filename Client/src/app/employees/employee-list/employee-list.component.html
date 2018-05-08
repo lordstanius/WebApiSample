@@ -1,5 +1,5 @@
 <div class="example-container mat-elevation-z2">
-  <mat-table #table [dataSource]="dataSource">
+  <mat-table #table [dataSource]="employeeService.employeeList?.dataSource">
 
     <ng-container matColumnDef="EmployeeID">
       <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
